@@ -1,0 +1,10 @@
+float random = 825;
+int uur = 60;
+int dag = 24;
+int jaar = 365;
+float uren = random / 60;
+println(random / 60);
+float dagen = random / 24;
+println(random / 24);
+float jaren = random / 365;
+println(random /365);
