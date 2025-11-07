@@ -1,7 +1,8 @@
 int score = 0;
 PImage mandje;
+int mandX = 200;
 
-Bal myBal1, myBal2, myBal3 ;
+Bal myBal1, myBal2, myBal3;
 Bal[] balletjes;
 
 class Bal {
@@ -20,9 +21,9 @@ class Bal {
   void display() {
     fill(kleurR, kleurG, kleurB);
     ellipse(x, y, diameter, diameter);
-    
+
     y += snelheid;
-    
+
     if ( y >= 400) {
       y = 0;
       reset();
@@ -39,7 +40,7 @@ class Bal {
     kleurB = random(0, 255);
     x = random(30, 380);
     y = 0;
-    diameter = random(15, 30);
+    diameter = random(15, 40);
     snelheid = random(2, 5);
   }
 }
@@ -66,13 +67,17 @@ void draw() {
     myBal.display();
 
     float distance = dist(myBal.x, myBal.y, mouseX + 30, 370 + 30);
-    if (distance < 55) {
-      score ++;
+    if (distance < 50) {
+      if (myBal.diameter <= 20) {
+        score = score + 1;
+      } else  if (myBal.diameter > 20 && myBal.diameter <30 ) {
+        score = score + 2;
+      } else if (myBal.diameter >= 30) {
+        score = score + 3;
+      }
       myBal.reset(); // reset de bal na vangst
     }
   }
-
   // het mandje
-  fill(255, 175, 100);
   image(mandje, mouseX, 340, 60, 60);
 }
